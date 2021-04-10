@@ -1,0 +1,146 @@
+<ul class="list-group list-group-flush">
+    <li class="list-group-item">
+        Kiralanan Araç :
+        <strong>{{ rentalData.brandName }} {{ rentalData.carName }}</strong>
+    </li>
+    <li class="list-group-item">
+        Renk : <strong>{{ rentalData.colorName }}</strong>
+    </li>
+    <li class="list-group-item">
+        Model :<strong> {{ rentalData.modelYear }}</strong>
+    </li>
+    <li class="list-group-item">
+        KDV'li Kira Fiyatı :
+        <strong>
+            {{ rentalData.dailyPrice |currency: "₺" }}/Gün</strong>
+    </li>
+    <li class="list-group-item">
+        Toplam Ödenecek Tutar :
+        <b class="text-success">{{
+            rentalData.totalPrice | currency: "₺"
+            }}</b>
+    </li>
+</ul>
+<div class="row">
+    <div class="col-md-5" *ngIf="crediCards!==null">
+        <div class="card mt-4">
+            <div class="card-header text-center">Kayıtlı Kartlarım</div>
+            <div class="card-body">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item" *ngFor="let card of crediCards">
+                        {{card.number.toString().replace(
+                        card.number.toString().slice(2, 14),
+                        "************"
+                        )
+
+                        }}
+                        <button type="button" class="btn my-btn" data-bs-toggle="modal" data-bs-target="#cardModal">
+                            Ödeme İçin Bu Kartı Kullan
+                        </button>
+                        <div class="modal fade" id="cardModal" tabindex="-1" aria-labelledby="cardModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="cardModalLabel">
+                                            Bilgilendirme
+                                        </h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        {{
+                                        card.number.toString().replace(
+                                        card.number.toString().slice(2, 14),
+                                        "************"
+                                        )
+                                        }}
+                                        Numaralı Kart İle Ödeme Yapılacak
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                            Vazgeç
+                                        </button>
+                                        <button (click)="payWithSavedCard(card)" type="button" class="btn btn-primary">
+                                            Devam Et
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div [class]="setCardClass()">
+        <div class="card mt-4">
+            <div class="card-header text-center">
+                <strong>Ödeme İşlemi</strong>
+            </div>
+            <div class="icons" style="text-align: center">
+                <img src="https://img.icons8.com/color/48/000000/visa.png" />
+                <img src="https://img.icons8.com/color/48/000000/mastercard-logo.png" />
+                <img src="https://img.icons8.com/color/48/000000/maestro.png" />
+            </div>
+            <form [formGroup]="paymentform">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="inputbox mt-3">
+                            <span>Kart Sahibinin Adı</span>
+                            <input type="text" name="name" class="form-control" formControlName="fullName"
+                                id="fullName-input" placeholder="Full Name" />
+
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="inputbox mt-3 mr-2">
+                                    <span>Kart Numarası</span>
+                                    <input type="number" name="name" minlength="16" maxlength="16"
+                                        formControlName="number" class="form-control"
+                                        placeholder="Örn: 1234567891011121" />
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="d-flex flex-row">
+                                        <div class="inputbox mt-3 mr-2">
+                                            <span>Son Kullanım Tarihi</span>
+                                            <input type="text" name="name" minlength="5" maxlength="5"
+                                                class="form-control" formControlName="expirationDate"
+                                                placeholder="Örn: 04/21" />
+
+                                        </div>
+                                        <div class="inputbox mt-3 mr-2">
+                                            <span>Güvenlik Kodu</span>
+                                            <input type="text" name="name" minlength="3" maxlength="4"
+                                                class="form-control" formControlName="cvv" placeholder="Örn: 123" />
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <div class="check" style="margin-left: 17px">
+                <div class="form-check form-switch">
+                    <input [(ngModel)]="isChecked" class="form-check-input" type="checkbox" id="isChecked" checked />
+                    <label class="form-check-label" for="isChecked">Kartımı kaydet</label>
+                </div>
+            </div>
+            <div class="card-footer">
+                <div class="row">
+                    <button (click)="addRental()" class="btn my-btn">
+                        Ödeme Yap
+                        <strong class="text-warning">({{ rentalData.totalPrice | currency: "₺" }})
+                        </strong>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

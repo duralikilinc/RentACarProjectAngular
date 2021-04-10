@@ -1,0 +1,109 @@
+<div class="container">
+    <br>
+    <br>
+    <br>
+    <div class="row">
+        <div class="col-md-6 offset-3">
+            <h1 class="fw-bold mb-5 offset-4">Sign Up</h1>
+            <form [formGroup]="registerform">
+                <div class="mb-3">
+                    <label for="first-name-input" class="form-label">Adınız:</label>
+                    <div class="input-group has-validation">
+                        <input formControlName="firstName" type="text" class="form-control" [ngClass]="{
+                  'is-invalid':
+                  registerform.controls['firstName'].errors &&
+                    (registerform.controls['firstName'].touched ||
+                    registerform.controls['firstName'].dirty),
+                  'is-valid':
+                    !registerform.controls['firstName'].errors &&
+                    (registerform.controls['firstName'].touched ||
+                    registerform.controls['firstName'].dirty)
+                }" id="first-name-input" placeholder="Durali" />
+                        <div class="invalid-feedback">Ad zorunlu.</div>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="last-name-input" class="form-label">Soyadınız:</label>
+                    <div class="input-group has-validation">
+                        <input formControlName="lastName" type="text" class="form-control" [ngClass]="{
+                  'is-invalid':
+                  registerform.controls['lastName'].errors &&
+                    (registerform.controls['lastName'].touched ||
+                    registerform.controls['lastName'].dirty),
+                  'is-valid':
+                    !registerform.controls['lastName'].errors &&
+                    (registerform.controls['lastName'].touched ||
+                    registerform.controls['lastName'].dirty)
+                }" id="last-name-input" placeholder="KILINÇ" />
+                        <div class="invalid-feedback">Soyad zorunlu.</div>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="email-input" class="form-label">E-Mail:</label>
+                    <div class="input-group has-validation">
+                        <input formControlName="email" type="email" class="form-control" [ngClass]="{
+                  'is-invalid':
+                  registerform.controls['email'].errors &&
+                    (registerform.controls['email'].touched ||
+                    registerform.controls['email'].dirty),
+                  'is-valid':
+                    !registerform.controls['email'].errors &&
+                    (registerform.controls['email'].touched ||
+                    registerform.controls['email'].dirty)
+                }" id="email-input" placeholder="name@example.com" />
+                        <div class="invalid-feedback">E-Mail zorunlu.</div>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="password-input" class="form-label">Şifre:</label>
+                    <div class="input-group has-validation">
+                        <input type="password" formControlName="password" class="form-control" [ngClass]="{
+                  'is-invalid':
+                  registerform.controls['password'].errors &&
+                    (registerform.controls['password'].touched ||
+                    registerform.controls['password'].dirty),
+                  'is-valid':
+                    !registerform.controls['password'].errors &&
+                    (registerform.controls['password'].touched ||
+                    registerform.controls['password'].dirty)
+                }" id="password-input" placeholder="***********" />
+                       <div class="invalid-feedback">Şifre zorunlu</div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="password-input" class="form-label">Şifreyi Onayla:</label>
+                    <div class="input-group has-validation">
+                        <input type="password" formControlName="confirmpassword" class="form-control" [ngClass]="{
+                  'is-invalid':
+                  registerform.controls['confirmpassword'].errors &&
+                    (registerform.controls['confirmpassword'].touched ||
+                    registerform.controls['confirmpassword'].dirty),
+                  'is-valid':
+                    !registerform.controls['confirmpassword'].errors &&
+                    (registerform.controls['confirmpassword'].touched ||
+                    registerform.controls['confirmpassword'].dirty)
+                }" id="password-input" placeholder="***********" />
+                       <div class="invalid-feedback">Şifreler uyuşmuyor.</div>
+                    </div>
+                  
+                </div>
+                
+                <button (click)="register()" class="btn btn-primary btn-lg rounded-1 shadow-xl w-100">
+                  Kayıt Ol
+                </button>
+            </form>
+
+            <div class="d-flex mt-5">
+                <p class="my-auto text-secondary me-2">
+                    Zaten bir hesabınız varsa
+                </p>
+                <a routerLink="/login" class="btn btn-outline-success rounded-3">Giriş Yap</a>
+            </div>
+        </div>
+
+
+    </div>
+</div>

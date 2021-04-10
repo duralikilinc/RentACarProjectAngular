@@ -1,0 +1,137 @@
+<br>
+<div class="container">
+  <h1 class="fw-bold offset-5">Account</h1>
+  <br>
+  <form *ngIf="accountform" [formGroup]="accountform">
+    <div class="row">
+      <div class="col-sm">
+        <div class="mb-3">
+          <label for="first-name-input" class="form-label">First name</label>
+          <div class="input-group has-validation">
+            <input formControlName="firstName" type="text" class="form-control" [ngClass]="{
+                  'is-invalid':
+                  accountform.controls['firstName'].errors &&
+                    (accountform.controls['firstName'].touched ||
+                    accountform.controls['firstName'].dirty),
+                  'is-valid':
+                    !accountform.controls['firstName'].errors &&
+                    (accountform.controls['firstName'].touched ||
+                    accountform.controls['firstName'].dirty)
+                }" id="first-name-input" placeholder="Ad" />
+            <div class="invalid-feedback">Please enter your first name.</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm">
+        <div class="mb-3">
+          <label for="last-name-input" class="form-label">Last name</label>
+          <div class="input-group has-validation">
+            <input formControlName="lastName" type="text" class="form-control" [ngClass]="{
+                  'is-invalid':
+                  accountform.controls['lastName'].errors &&
+                    (accountform.controls['lastName'].touched ||
+                    accountform.controls['lastName'].dirty),
+                  'is-valid':
+                    !accountform.controls['lastName'].errors &&
+                    (accountform.controls['lastName'].touched ||
+                    accountform.controls['lastName'].dirty)
+                }" id="last-name-input" placeholder="Soyad" />
+            <div class="invalid-feedback">Please enter your last name.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="company-name-input" class="form-label">Company name</label>
+      <div class="input-group has-validation">
+        <input formControlName="companyName" type="text" id="company-name-input" class="form-control" [ngClass]="{
+              'is-invalid':
+              accountform.controls['companyName'].errors &&
+                (accountform.controls['companyName'].touched ||
+                accountform.controls['companyName'].dirty),
+              'is-valid':
+                !accountform.controls['companyName'].errors &&
+                (accountform.controls['companyName'].touched ||
+                accountform.controls['companyName'].dirty)
+            }" placeholder="" />
+        <div class="invalid-feedback">Please enter your last name.</div>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="email-input" class="form-label">Email address</label>
+      <input type="email" class="form-control text-secondary" id="email-input" placeholder="name@example.com"
+        [value]="this.userDetail.email" [attr.disabled]="true" />
+    </div>
+
+    <h2 class="fw-light">Findeks</h2>
+    <div class="row">
+      <div class="col-md-3">
+        <div class="mb-3">
+          <label for="findeks-score-input" class="form-label">
+            Findeks Score
+          </label>
+          <input id="findeks-score-input" [attr.disabled]="true" type="number" class="form-control"
+            [value]="findex ? findex.score : 0" />
+        </div>
+      </div>
+    </div>
+
+    <h2 class="fw-light">Security</h2>
+    <div class="row">
+      <div class="col">
+        <div class="row col-md-6">
+          <div class="mb-3">
+            <label for="current-password-input" class="form-label">Enter current password</label>
+            <div class="input-group has-validation">
+              <input type="password" formControlName="currentPassword" id="current-password-input" class="form-control"
+                [ngClass]="{'is-invalid': accountform.controls['currentPassword'].errors}" placeholder="***********" />
+              <div class="invalid-feedback">Please enter your password.</div>
+            </div>
+          </div>
+        </div>
+        <div class="row col-md-6">
+          <div class="mb-3">
+            <label for="new-password-input" class="form-label">
+              Enter new password (Optional)
+            </label>
+            <div class="input-group has-validation">
+              <input type="password" formControlName="newPassword" id="new-password-input" class="form-control"
+                [ngClass]="{
+                  'is-invalid':
+                  accountform.controls['newPassword'].errors &&
+                    (accountform.controls['newPassword'].touched ||
+                    accountform.controls['newPassword'].dirty)
+                }" placeholder="***********" />
+              <div class="invalid-feedback">Please enter your password.</div>
+            </div>
+          </div>
+        </div>
+        <div class="row col-md-6">
+          <div class="mb-3">
+            <label for="password-input" class="form-label">Re password</label>
+            <div class="input-group has-validation">
+              <input type="password" formControlName="confirmpassword" class="form-control" [ngClass]="{
+            'is-invalid':
+            accountform.controls['confirmpassword'].errors &&
+              (accountform.controls['confirmpassword'].touched ||
+              accountform.controls['confirmpassword'].dirty),
+            'is-valid':
+              !accountform.controls['confirmpassword'].errors &&
+              (accountform.controls['confirmpassword'].touched ||
+              accountform.controls['confirmpassword'].dirty)
+          }" id="password-input" placeholder="***********" />
+              <div class="invalid-feedback">Şifreler uyuşmuyor.</div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <button (click)="updateAccount()" class="btn btn-primary">
+      Update Account
+    </button>
+  </form>
+</div>
