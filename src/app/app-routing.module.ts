@@ -5,6 +5,7 @@ import { BrandComponent } from './components/brand/brand.component';
 import { CarComponent } from './components/car/car.component';
 import { LoginComponent } from './components/login/login.component';
 import { LogoutComponent } from './components/logout/logout.component';
+import { MyrentComponent } from './components/myrent/myrent.component';
 import { PaymentComponent } from './components/payment/payment.component';
 import { RegisterComponent } from './components/register/register.component';
 import { RentAddComponent } from './components/rent-add/rent-add.component';
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: "cars/filter/:brandId/:colorId", component: CarComponent },
   { path: "brands", component: BrandComponent },
   { path: "login", component: LoginComponent },
+  { path: "myrents", component: MyrentComponent, canActivate: [LoginGuard] },
   { path: "logout", component: LogoutComponent },
   { path: "signup", component: RegisterComponent },
   { path: "account", component: AccountComponent, canActivate: [LoginGuard] },

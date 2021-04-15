@@ -24,6 +24,7 @@ import { AccountComponent } from './components/account/account.component';
 import { RentComponent } from './components/rent/rent.component';
 import { PaymentComponent } from './components/payment/payment.component';
 import { RentAddComponent } from './components/rent-add/rent-add.component';
+import { MyrentComponent } from './components/myrent/myrent.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { RentAddComponent } from './components/rent-add/rent-add.component';
     AccountComponent,
     RentComponent,
     PaymentComponent,
-    RentAddComponent
+    RentAddComponent,
+    MyrentComponent
   ],
   imports: [
     BrowserModule,

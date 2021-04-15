@@ -17,10 +17,10 @@ export class RentalService {
   constructor(private httpClient: HttpClient) { }
 
   IsRental(carId: number): Observable<ResponseModel> {
-    return this.httpClient.get<ResponseModel>(this.apiUrl + "isrental/"+carId);
+    return this.httpClient.get<ResponseModel>(this.apiUrl + "isrental/" + carId);
   }
-  getFindexControl(customerId:number,carId:number):Observable<ResponseModel>{
-    return this.httpClient.get<ResponseModel>(this.apiUrl+"getFindexControl/"+customerId+"/"+carId);
+  getFindexControl(customerId: number, carId: number): Observable<ResponseModel> {
+    return this.httpClient.get<ResponseModel>(this.apiUrl + "getFindexControl/" + customerId + "/" + carId);
   }
   getRentalDetails(): Observable<ListResponseModel<Rental>> {
     return this.httpClient.get<ListResponseModel<Rental>>(this.apiUrl + "getRentalDetails");
@@ -29,6 +29,9 @@ export class RentalService {
     return this.httpClient.get<SingleResponseModel<Rental>>(this.apiUrl + "getById/" + id);
   }
   rentalAdd(rental: Rental): Observable<ResponseModel> {
-    return this.httpClient.post<ResponseModel>(this.apiUrl,rental);
+    return this.httpClient.post<ResponseModel>(this.apiUrl, rental);
+  }
+  getRentalDetailByCustomerId(customerId: number): Observable<ListResponseModel<Rental>> {
+    return this.httpClient.get<ListResponseModel<Rental>>(this.apiUrl + "getByCustomerIdDetail/" + customerId);
   }
 }
