@@ -25,6 +25,8 @@ import { RentComponent } from './components/rent/rent.component';
 import { PaymentComponent } from './components/payment/payment.component';
 import { RentAddComponent } from './components/rent-add/rent-add.component';
 import { MyrentComponent } from './components/myrent/myrent.component';
+import { StoreModule } from '@ngrx/store';
+import { AppReducers } from './store/app.reducer';
 
 @NgModule({
   declarations: [
@@ -53,6 +55,7 @@ import { MyrentComponent } from './components/myrent/myrent.component';
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
+    StoreModule.forRoot(AppReducers),
     ToastrModule.forRoot({
       positionClass:"toast-bottom-right",
       timeOut:3000
